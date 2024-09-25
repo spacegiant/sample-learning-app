@@ -5,14 +5,15 @@ export interface Data {
 export interface Course {
   id: string;
   title: string;
-  pages: Page[];
+  pages: PageType[];
 }
 
-interface PageBase {
+export interface PageBase {
   title: string;
   subHeading?: string;
   instruction?: string;
   image?: string;
+  pageType: PageTypes;
 }
 
 // type Card = {
@@ -20,7 +21,18 @@ interface PageBase {
 //   image?: string;
 // };
 
-export type Page =
+export enum PageTypes {
+  DragDropZones,
+  DragSlots,
+  HoverOver,
+  MultiChoice,
+  SingleChoice,
+  SimpleInfo,
+  SplashPage,
+  Timeline,
+}
+
+export type PageType =
   | SplashPage
   | SimpleInfo
   | DragSlots
@@ -30,9 +42,13 @@ export type Page =
   | SingleChoice
   | multiChoice;
 
-export interface SplashPage extends PageBase {
+// export interface SplashPage extends PageBase {
+//   bodyContent: string;
+// }
+
+export type SplashPage = PageBase & {
   bodyContent: string;
-}
+};
 
 export interface SimpleInfo extends PageBase {
   info: string;
