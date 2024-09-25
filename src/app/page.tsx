@@ -10,7 +10,7 @@ export default function Home() {
       {/* <header className="items-start bg-pink-300">Sample Learning App</header> */}
       <Header />
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <CourseHandler data={data} />
+        <CourseHandler data={data} currentPage={3} />
       </main>
       <Footer />
     </div>
