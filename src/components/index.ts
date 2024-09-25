@@ -1,4 +1,5 @@
 export { Button } from "./Button/Button";
+export { DragAndDrop } from "./DragAndDrop/DragAndDrop";
 export { DragAndDropItem } from "./DragAndDrop/DragAndDropItem";
 export { DragAndDropZone } from "./DragAndDrop/DragAndDropZone";
 export { Footer } from "./Footer/Footer";

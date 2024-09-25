@@ -1,3 +1,5 @@
-export function DragAndDropItem() {
-  return <li>List item</li>;
+import { ReactNode } from "react";
+
+export function DragAndDropItem({ children }: { children: ReactNode }) {
+  return <li>{children}</li>;
 }
