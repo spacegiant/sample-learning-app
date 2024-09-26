@@ -84,13 +84,13 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
       const foundItem = zoneItems.filter((zi) => zi.answerId === item.answerId);
       if (foundItem[0]) return foundItem[0].answerId !== "";
     };
-    const classes = ["p-1"];
+
     return (
       <Draggable key={index} id={item.answerId}>
-        <Card classNames={classes}>
+        <DragCard>
           {item.answer}
           {hasBeenDropped() == true && "Yes"}
-        </Card>
+        </DragCard>
       </Draggable>
     );
   });
@@ -106,10 +106,10 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
 
     return (
       <Droppable key={index} id={item.questionId}>
-        <Card>
+        <DropCard>
           {item.questionLabel}
           {hasAnswer() && "true"}
-        </Card>
+        </DropCard>
       </Droppable>
     );
   });
@@ -185,8 +185,17 @@ function Draggable(props: { children: ReactNode; id: string }) {
   );
 }
 
-function Card(props: { children: ReactNode; classNames?: string[] }) {
-  console.log(props.classNames);
-  const classes = `drop-shadow px-8 py-4 rounded-md text-black min-w-52 min-h-36 inline-block flex items-center justify-center bg-gray-300`;
+function Card(props: { children: ReactNode; classNames?: string }) {
+  const classes = `${
+    props.classNames ?? ""
+  } px-8 py-4 rounded-md text-black min-w-52 min-h-36 inline-block flex items-center justify-center `;
   return <span className={classes}>{props.children}</span>;
+}
+
+function DropCard(props: { children: ReactNode }) {
+  return <Card classNames="border-2 border-slate-300">{props.children}</Card>;
+}
+
+function DragCard(props: { children: ReactNode }) {
+  return <Card classNames="drop-shadow bg-gray-300">{props.children}</Card>;
 }
