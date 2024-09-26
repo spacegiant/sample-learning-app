@@ -28,27 +28,38 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
   // Source: https://nextjs.org/docs/messages/react-hydration-error
   const [isClient, setIsClient] = useState(false);
 
-  const data = dragAndDropData.items;
-
   useEffect(() => {
     setIsClient(true);
   }, []);
   // END
+
+  const [zoneItems, updateZoneItems] = useState(
+    dragAndDropData.items.map((item) => {
+      return {
+        questionId: item.questionId,
+        answerId: "",
+      };
+    })
+  );
+
+  const correctAnswers = dragAndDropData.items.map((item) => {
+    return {
+      questionId: item.questionId,
+      answerId: item.answerId,
+    };
+  });
+
+  const [quizResult, setQuizResult] = useState<string | undefined>();
+
+  const checkAnswers = () => _.isEqual(correctAnswers, zoneItems);
+
+  const data = dragAndDropData.items;
 
   useEffect(() => {
     if (shuffledAnswers.length === 0) {
       shuffleAnswers(dragAndDropData.items);
     }
   }, [dragAndDropData.items]);
-
-  const zoneItemsInit = dragAndDropData.items.map((item) => {
-    return {
-      questionId: item.questionId,
-      answerId: "",
-    };
-  });
-
-  const [zoneItems, updateZoneItems] = useState(zoneItemsInit);
 
   const handleUpdateZoneItems = ({
     questionId,
@@ -135,7 +146,19 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
       <div className="flex-0 content-center w-32">
         <p className="text-xl pb-4">Drag Left</p>
         <p className="text-md pb-4">{dragAndDropData.instruction}</p>
-        <Button disabled={!allItemsDragged}>Check Answers</Button>
+        <Button
+          onClick={() => {
+            const result = checkAnswers();
+            setQuizResult(result ? "correct" : "incorrect");
+          }}
+          disabled={!allItemsDragged}
+        >
+          Check Answers
+        </Button>
+
+        <p className={quizResult ? "visible" : "invisible"}>
+          {quizResult ?? ""}
+        </p>
       </div>
       <div className="flex flex-1 flex-col items-center">
         {isClient && draggables}

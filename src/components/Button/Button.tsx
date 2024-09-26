@@ -3,15 +3,15 @@ import { JSX, ReactNode } from "react";
 type ButtonProps = {
   children: ReactNode;
   disabled?: boolean;
-  onClick?: () => null;
+  onClick?: () => void;
 };
 
-export function Button({ children, disabled }: ButtonProps) {
+export function Button({ children, disabled, onClick }: ButtonProps) {
   const classes = `${
     disabled && "opacity-30"
   } bg-lime-700 hover:bg-lime-800 text-lime-200 px-4 py-2 rounded-md`;
   return (
-    <button onClick={() => {}} disabled={disabled} className={classes}>
+    <button onClick={onClick} disabled={disabled} className={classes}>
       {children}
     </button>
   );
