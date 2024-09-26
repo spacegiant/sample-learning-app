@@ -1,4 +1,5 @@
-export { Button } from "./Button/Button";
+export { Button, PaginationButton } from "./Button/Button";
+export { DropCard, DragCard } from "./Card/Card";
 export { DragAndDrop } from "./DragAndDrop/DragAndDrop";
 export { DragAndDropItem } from "./DragAndDrop/DragAndDropItem";
 export { DragAndDropZone } from "./DragAndDrop/DragAndDropZone";

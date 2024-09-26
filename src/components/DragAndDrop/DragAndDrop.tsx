@@ -8,11 +8,8 @@ import {
   useDroppable,
 } from "@dnd-kit/core";
 import _ from "lodash";
-import React, { useEffect } from "react";
-
-import { ReactNode, useState } from "react";
-import { Button } from "../Button/Button";
-import { DragCard, DropCard } from "../Card/Card";
+import React, { useEffect, ReactNode, useState } from "react";
+import { Button, DragCard, DropCard } from "..";
 
 type DragAndDropProps = {
   dragAndDropData: DragDropZones;
