@@ -12,6 +12,7 @@ import React, { useEffect } from "react";
 
 import { ReactNode, useState } from "react";
 import { Button } from "../Button/Button";
+import { DragCard, DropCard } from "../Card/Card";
 
 type DragAndDropProps = {
   dragAndDropData: DragDropZones;
@@ -183,19 +184,4 @@ function Draggable(props: { children: ReactNode; id: string }) {
       {props.children}
     </span>
   );
-}
-
-function Card(props: { children: ReactNode; classNames?: string }) {
-  const classes = `${
-    props.classNames ?? ""
-  } px-8 py-4 rounded-md text-black min-w-52 min-h-36 inline-block flex items-center justify-center `;
-  return <span className={classes}>{props.children}</span>;
-}
-
-function DropCard(props: { children: ReactNode }) {
-  return <Card classNames="border-2 border-slate-300">{props.children}</Card>;
-}
-
-function DragCard(props: { children: ReactNode }) {
-  return <Card classNames="drop-shadow bg-gray-300">{props.children}</Card>;
 }
