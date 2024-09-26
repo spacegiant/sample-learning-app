@@ -80,7 +80,7 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
 
   const draggables = shuffledAnswers.map((item, index) => {
     const foundItem = zoneItems.filter((zi) => zi.answerId === item.answerId);
-    console.log(foundItem[0]?.answerId == null);
+
     return (
       <Draggable key={index} id={item.answerId}>
         <DragCard hasBeenDropped={!!foundItem[0]?.answerId}>
@@ -126,13 +126,19 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
     });
   }
 
+  const allItemsDragged =
+    -1 ===
+    zoneItems.findIndex((item) => {
+      return item.answerId === "";
+    });
+
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <div className="flex flex-1 flex-col items-center">{droppables}</div>
       <div className="flex-0 content-center w-32">
         <p className="text-xl pb-4">Drag Left</p>
-        <p className="text-xl pb-4">{dragAndDropData.instruction}</p>
-        <Button>Check Answers</Button>
+        <p className="text-md pb-4">{dragAndDropData.instruction}</p>
+        <Button disabled={!allItemsDragged}>Check Answers</Button>
       </div>
       <div className="flex flex-1 flex-col items-center">
         {isClient && draggables}
