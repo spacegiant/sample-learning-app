@@ -11,6 +11,7 @@ import _ from "lodash";
 import React, { useEffect } from "react";
 
 import { ReactNode, useState } from "react";
+import { Button } from "../Button/Button";
 
 type DragAndDropProps = {
   dragAndDropData: DragDropZones;
@@ -136,7 +137,8 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
       </div>
       <div className="flex-0 content-center w-32">
         <p className="text-xl pb-4">Drag Left</p>
-        <p>{dragAndDropData.instruction}</p>
+        <p className="text-xl pb-4">{dragAndDropData.instruction}</p>
+        <Button>Check Answers</Button>
       </div>
       <div className="flex flex-1 flex-col items-center">
         {isClient && draggables}

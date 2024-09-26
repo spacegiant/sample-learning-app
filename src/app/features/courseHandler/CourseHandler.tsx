@@ -3,14 +3,15 @@ import { DragAndDropPage } from "../dragAndDropPage/DragAndDropPage";
 
 export function CourseHandler({
   data,
-  currentCourse = 0,
+  currentCourseIndex = 0,
   currentPage = 0,
 }: {
   data: Data;
-  currentCourse?: number;
+  currentCourseIndex?: number;
   currentPage?: number;
 }) {
-  const currentPageData = data.courses[currentCourse].pages[currentPage];
+  const currentCourse = data.courses[currentCourseIndex];
+  const currentPageData = currentCourse.pages[currentPage];
 
   switch (currentPageData.pageType) {
     case PageTypes.DragDropZones:
