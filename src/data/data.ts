@@ -24,7 +24,9 @@ export const data: Data = {
           pageType: PageTypes.DragSlots,
         },
         {
-          title: "Drop Zones",
+          title: "Accessibility Quiz",
+          instruction:
+            "The items on the right help with the disability on the left.",
           items: [
             {
               questionId: "question-1",

@@ -134,6 +134,10 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
         {/* {!isDropped ? droppables : null} */}
         {droppables}
       </div>
+      <div className="flex-0 content-center w-32">
+        <p className="text-xl pb-4">Drag Left</p>
+        <p>{dragAndDropData.instruction}</p>
+      </div>
       <div className="flex flex-1 flex-col items-center">
         {isClient && draggables}
       </div>
