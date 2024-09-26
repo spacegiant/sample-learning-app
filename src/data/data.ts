@@ -36,15 +36,15 @@ export const data: Data = {
             },
             {
               questionId: "question-2",
-              questionLabel: "Two Soups",
+              questionLabel: "Motor Disability",
               answerId: "answer-2",
-              answer: "2",
+              answer: "Keyboard Accessibility",
             },
             {
               questionId: "question-3",
-              questionLabel: "Three",
+              questionLabel: "Auditory Disabilities",
               answerId: "answer-3",
-              answer: "3",
+              answer: "Captions & Transcripts",
             },
             // {
             //   questionId: "question-4",
