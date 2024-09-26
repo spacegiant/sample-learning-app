@@ -16,15 +16,17 @@ type DragAndDropProps = {
 };
 
 type ListOfAnswers = { answerId: string; answer: string }[];
-const shuffledAnswers: { answerId: string; answer: string }[] = [];
+let shuffledAnswers: { answerId: string; answer: string }[] = [];
 
 function shuffleAnswers(listOfAnswers: ListOfAnswers) {
   const shuffled = _.shuffle(listOfAnswers);
   shuffledAnswers.push(...shuffled);
 }
 
-export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
-  // Important: Prevent error when shuffled items rehydrating
+export function DragAndDrop({
+  dragAndDropData,
+}: DragAndDropProps & { currentPage: number }) {
+  // FIXME: Prevent error when shuffled items rehydrating
   // Source: https://nextjs.org/docs/messages/react-hydration-error
   const [isClient, setIsClient] = useState(false);
 
@@ -33,13 +35,18 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
   }, []);
   // END
 
-  const [zoneItems, updateZoneItems] = useState(
-    dragAndDropData.items.map((item) => {
+  console.log(dragAndDropData);
+
+  const initialZoneItems = (initialData: DragDropZones) =>
+    initialData.items.map((item) => {
       return {
         questionId: item.questionId,
         answerId: "",
       };
-    })
+    });
+
+  const [zoneItems, updateZoneItems] = useState(
+    initialZoneItems(dragAndDropData)
   );
 
   const correctAnswers = dragAndDropData.items.map((item) => {
@@ -56,10 +63,13 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
   const data = dragAndDropData.items;
 
   useEffect(() => {
+    console.log("dragAndDropData.items changed");
+    updateZoneItems(initialZoneItems(dragAndDropData));
+    shuffledAnswers = [];
     if (shuffledAnswers.length === 0) {
       shuffleAnswers(dragAndDropData.items);
     }
-  }, [dragAndDropData.items]);
+  }, [dragAndDropData, dragAndDropData.items]);
 
   const handleUpdateZoneItems = ({
     questionId,

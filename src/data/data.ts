@@ -24,7 +24,7 @@ export const data: Data = {
           pageType: PageTypes.DragSlots,
         },
         {
-          title: "Accessibility Quiz",
+          title: "Accessibility Tools",
           instruction:
             "The items on the right help with the disability on the left.",
           items: [
@@ -45,6 +45,38 @@ export const data: Data = {
               questionLabel: "Auditory Disabilities",
               answerId: "answer-3",
               answer: "Captions & Transcripts",
+            },
+            // {
+            //   questionId: "question-4",
+            //   questionLabel: "Four",
+            //   answerId: "answer-4",
+            //   answer: "4",
+            // },
+          ],
+          pageType: PageTypes.DragDropZones,
+        },
+        {
+          title: "Accessibility - The Whys",
+          instruction:
+            "Match the business type to the benefit of implementing accessibility standards",
+          items: [
+            {
+              questionId: "question-1",
+              questionLabel: "Required by UK Law",
+              answerId: "answer-1",
+              answer: "Public Sector",
+            },
+            {
+              questionId: "question-2",
+              questionLabel: "Could lose lucrative customers",
+              answerId: "answer-2",
+              answer: "Commercial Businesses",
+            },
+            {
+              questionId: "question-3",
+              questionLabel: "Help prevent discrimination complaints",
+              answerId: "answer-3",
+              answer: "All Businesses",
             },
             // {
             //   questionId: "question-4",
