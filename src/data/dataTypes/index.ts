@@ -61,9 +61,12 @@ export interface DragSlots extends PageBase {
 }
 
 export interface DragDropZones extends PageBase {
-  zones: string[];
-  dragItems: string[];
-  solution: string[];
+  items: {
+    questionId: string;
+    questionLabel: string;
+    answerId: string;
+    answer: string;
+  }[];
 }
 
 export interface Info {

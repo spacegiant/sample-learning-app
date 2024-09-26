@@ -25,9 +25,32 @@ export const data: Data = {
         },
         {
           title: "Drop Zones",
-          zones: ["one", "two", "three"],
-          dragItems: ["A", "B", "C"],
-          solution: ["A", "B", "C"],
+          items: [
+            {
+              questionId: "question-1",
+              questionLabel: "Visually Impaired",
+              answerId: "answer-1",
+              answer: "Screen Reader",
+            },
+            {
+              questionId: "question-2",
+              questionLabel: "Two Soups",
+              answerId: "answer-2",
+              answer: "2",
+            },
+            {
+              questionId: "question-3",
+              questionLabel: "Three",
+              answerId: "answer-3",
+              answer: "3",
+            },
+            // {
+            //   questionId: "question-4",
+            //   questionLabel: "Four",
+            //   answerId: "answer-4",
+            //   answer: "4",
+            // },
+          ],
           pageType: PageTypes.DragDropZones,
         },
         {
