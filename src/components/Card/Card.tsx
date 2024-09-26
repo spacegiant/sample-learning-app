@@ -10,7 +10,7 @@ function Card(props: { children: ReactNode; classNames?: string }) {
 export function DropCard(props: { children: ReactNode; isOver?: boolean }) {
   return (
     <Card
-      classNames={`border-2 border-slate-300 ${
+      classNames={`flex flex-col border-2 border-slate-300 ${
         props.isOver && "border-slate-500"
       }`}
     >

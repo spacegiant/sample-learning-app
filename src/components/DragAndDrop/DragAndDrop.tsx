@@ -98,19 +98,27 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
 
   const droppables = data.map((item, index) => {
     // console.log(zoneItems);
-    const hasAnswer = () => {
-      const foundItem = zoneItems.filter(
-        (zi) => zi.questionId === item.questionId
-      );
-      if (foundItem[0]) return foundItem[0].answerId !== "";
-    };
+    const answer = zoneItems.filter(
+      (zi) => zi.questionId === item.questionId
+    )[0];
 
-    return (
-      <Droppable key={index} id={item.questionId}>
-        {item.questionLabel}
-        {hasAnswer() && "true"}
-      </Droppable>
+    const answerLabel = dragAndDropData.items.find(
+      (item) => item.answerId === answer.answerId
     );
+
+    const answerBlock = answerLabel?.answer ? (
+      <>
+        <div>+</div>
+        <div>{answerLabel?.answer}</div>
+      </>
+    ) : null;
+
+    return answer != null ? (
+      <Droppable key={index} id={item.questionId} answerId={""}>
+        <div>{item.questionLabel}</div>
+        {answerBlock}
+      </Droppable>
+    ) : null;
   });
 
   function handleDragEnd(event: DragEndEvent) {
@@ -146,7 +154,11 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
   );
 }
 
-function Droppable(props: { children: ReactNode; id: string }) {
+function Droppable(props: {
+  children: ReactNode;
+  id: string;
+  answerId: string;
+}) {
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
   });
@@ -158,7 +170,10 @@ function Droppable(props: { children: ReactNode; id: string }) {
         height: "10rem",
       }}
     >
-      <DropCard isOver={isOver}>{props.children}</DropCard>
+      <DropCard isOver={isOver}>
+        {props.children}
+        {}
+      </DropCard>
     </div>
   );
 }
