@@ -185,6 +185,6 @@ function Draggable(props: { children: ReactNode; id: string }) {
 
 function Card(props: { children: ReactNode; classNames?: string[] }) {
   console.log(props.classNames);
-  const classes = `px-8 py-4 rounded-md text-black min-w-52 min-h-36 inline-block flex items-center justify-center bg-gray-300`;
+  const classes = `drop-shadow px-8 py-4 rounded-md text-black min-w-52 min-h-36 inline-block flex items-center justify-center bg-gray-300`;
   return <span className={classes}>{props.children}</span>;
 }
