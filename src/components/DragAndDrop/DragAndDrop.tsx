@@ -107,10 +107,8 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
 
     return (
       <Droppable key={index} id={item.questionId}>
-        <DropCard>
-          {item.questionLabel}
-          {hasAnswer() && "true"}
-        </DropCard>
+        {item.questionLabel}
+        {hasAnswer() && "true"}
       </Droppable>
     );
   });
@@ -152,14 +150,15 @@ function Droppable(props: { children: ReactNode; id: string }) {
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
   });
-  const style = {
-    height: "10rem",
-    color: isOver ? "green" : undefined,
-  };
 
   return (
-    <div ref={setNodeRef} style={style}>
-      {props.children}
+    <div
+      ref={setNodeRef}
+      style={{
+        height: "10rem",
+      }}
+    >
+      <DropCard isOver={isOver}>{props.children}</DropCard>
     </div>
   );
 }

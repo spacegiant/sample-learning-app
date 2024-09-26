@@ -7,8 +7,16 @@ function Card(props: { children: ReactNode; classNames?: string }) {
   return <span className={classes}>{props.children}</span>;
 }
 
-export function DropCard(props: { children: ReactNode }) {
-  return <Card classNames="border-2 border-slate-300">{props.children}</Card>;
+export function DropCard(props: { children: ReactNode; isOver?: boolean }) {
+  return (
+    <Card
+      classNames={`border-2 border-slate-300 ${
+        props.isOver && "border-slate-500"
+      }`}
+    >
+      {props.children}
+    </Card>
+  );
 }
 
 export function DragCard(props: { children: ReactNode }) {
