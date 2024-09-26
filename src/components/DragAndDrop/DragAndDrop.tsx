@@ -44,8 +44,6 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
     }
   }, [dragAndDropData.items]);
 
-  // const [isDropped, setIsDropped] = useState(false);
-
   const zoneItemsInit = dragAndDropData.items.map((item) => {
     return {
       questionId: item.questionId,
@@ -81,23 +79,18 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
   };
 
   const draggables = shuffledAnswers.map((item, index) => {
-    const hasBeenDropped = () => {
-      const foundItem = zoneItems.filter((zi) => zi.answerId === item.answerId);
-      if (foundItem[0]) return foundItem[0].answerId !== "";
-    };
-
+    const foundItem = zoneItems.filter((zi) => zi.answerId === item.answerId);
+    console.log(foundItem[0]?.answerId == null);
     return (
       <Draggable key={index} id={item.answerId}>
-        <DragCard>
+        <DragCard hasBeenDropped={!!foundItem[0]?.answerId}>
           {item.answer}
-          {hasBeenDropped() == true && "Yes"}
         </DragCard>
       </Draggable>
     );
   });
 
   const droppables = data.map((item, index) => {
-    // console.log(zoneItems);
     const answer = zoneItems.filter(
       (zi) => zi.questionId === item.questionId
     )[0];
@@ -131,17 +124,11 @@ export function DragAndDrop({ dragAndDropData }: DragAndDropProps) {
       questionId: event.over?.id.toString(),
       answerId: event.active.id.toString(),
     });
-    // if (event.over && event.over.id === "droppable") {
-    //   setIsDropped(true);
-    // }
   }
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className="flex flex-1 flex-col items-center">
-        {/* {!isDropped ? droppables : null} */}
-        {droppables}
-      </div>
+      <div className="flex flex-1 flex-col items-center">{droppables}</div>
       <div className="flex-0 content-center w-32">
         <p className="text-xl pb-4">Drag Left</p>
         <p className="text-xl pb-4">{dragAndDropData.instruction}</p>

@@ -19,6 +19,17 @@ export function DropCard(props: { children: ReactNode; isOver?: boolean }) {
   );
 }
 
-export function DragCard(props: { children: ReactNode }) {
-  return <Card classNames="drop-shadow bg-gray-300">{props.children}</Card>;
+export function DragCard(props: {
+  children: ReactNode;
+  hasBeenDropped: boolean;
+}) {
+  return (
+    <Card
+      classNames={`drop-shadow bg-gray-300 ${
+        props.hasBeenDropped && "invisible"
+      }`}
+    >
+      {props.children}
+    </Card>
+  );
 }
