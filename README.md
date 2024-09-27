@@ -12,4 +12,4 @@ POC to try out:
 
 ## Demo Video
 
-[![Demo](https://i.sstatic.net/Vp2cE.png)](https://youtu.be/fee4dwHJN14)
+[![Demo](video-thumbnail.png)](https://youtu.be/fee4dwHJN14)
