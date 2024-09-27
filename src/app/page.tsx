@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   return (
-    <div className=" mx-auto rounded-2xl max-w-5xl bg-slate-200 grid grid-rows-[20px_1fr_20px] items-center justify-items-stretch gap-8 sm:p-8 font-[family-name:var(--font-geist-sans)]">
+    <div className="bg-slate-200 sla-circles-bg mx-auto rounded-2xl max-w-5xl  grid grid-rows-[20px_1fr_20px] items-center justify-items-stretch gap-8 sm:p-8 font-[family-name:var(--font-geist-sans)]">
       <Header courseTitle={currentCourse.title} />
       <main className="flex flex-col gap-8" style={{ height: "580px" }}>
         <div className="flex justify-between">

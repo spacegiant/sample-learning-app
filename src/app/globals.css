@@ -25,6 +25,16 @@ body {
   user-select: none; /* Standard syntax */
 }
 
+.sla-bg-image {
+  background-image: url("/bg/annie-spratt-QckxruozjRg-unsplash.webp");
+  background-size: cover;
+}
+
+.sla-circles-bg {
+  background-image: url("/bg/circles-bg.webp");
+  background-size: cover;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
