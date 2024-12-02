@@ -8,7 +8,7 @@ type DragAndDropPageProps = {
 export function DragAndDropPage({ data }: DragAndDropPageProps) {
   return (
     <div className="flex flex-row gap-8">
-      <DragAndDrop dragAndDropData={data} />
+      <DragAndDrop dragAndDropData={data} currentPage={0} />
     </div>
   );
 }
